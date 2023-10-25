@@ -3,9 +3,13 @@
 <% @books.each do |book| %>
 
 <th>Title</th>
-<span><%= book.title %></span>
+<span>
+  <%= link_to book.title, book_path(book.id) %>
+</span>
 
 <th>Body</th>
 <span><%= book.body %></span>
 
 <% end %>
+
+<%= link_to "Destroy", destroy_book_path(@book.id), method: :delete, "data-confirm" => "Are you sure?" %>
