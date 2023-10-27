@@ -9,7 +9,8 @@ class BooksController < ApplicationController
       flash[:notice] = "Book was successfully created."
       redirect_to book_path(book.id)
     else
-      render :index
+      @error_messages = Book.errors.full_messages
+      render :index,locals: {error_messages: @error_messages}
     end
   end
 
